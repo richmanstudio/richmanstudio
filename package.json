@@ -2,8 +2,11 @@
   "name": "richman-studio",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://richmanstudio.github.io/richman-studio",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
