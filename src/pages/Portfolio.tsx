@@ -19,7 +19,7 @@ const allProjects: Project[] = [
     id: 1,
     title: 'ООО "ТЕКТОНИКА"',
     category: 'Корпоративный сайт',
-    img: '/assets/tektonika.png',
+    img: '/tektonika.png',
     description:
       'CRM-интеграция, личные кабинеты и BI-аналитика в одном решении.',
     link: '/portfolio/1',
