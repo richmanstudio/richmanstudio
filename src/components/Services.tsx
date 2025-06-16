@@ -59,18 +59,6 @@ const Services: React.FC = () => {
         </div>
       </div>
 
-      {/* Встраиваем ключевые кадры прямо в компонент */}
-      <style jsx>{`
-        @keyframes marquee {
-          0%   { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          animation-name: marquee;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-      `}</style>
     </section>
   )
 }
