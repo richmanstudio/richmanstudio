@@ -2,4 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ваши глобальные стили ниже */
+
+html { scroll-behavior: smooth; }
