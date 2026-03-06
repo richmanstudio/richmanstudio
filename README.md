@@ -23,7 +23,7 @@
 const danila: Developer = {
   name:     "Данила Капшук",
   alias:    "Daniel Richman",
-  age:      17,
+  age:      18,
   city:     "Хабаровск, Россия",
   
   focus:    "Mobile Development",
