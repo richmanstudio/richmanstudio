@@ -1,122 +1,104 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=1A56DB&height=200&section=header&text=Данила%20Капшук&fontSize=48&fontColor=ffffff&fontAlignY=38&desc=Mobile%20Developer%20·%20React%20Native%20·%20TypeScript&descAlignY=58&descSize=16&descColor=c7d9ff" width="100%"/>
-
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=13&duration=0&pause=0&color=4C7CF7&center=true&vCenter=true&repeat=false&width=600&lines=richmanstudio+%2F+richmanstudio" alt="" />
 </div>
+
+<br/>
 
 <div align="center">
 
-[![Telegram](https://img.shields.io/badge/Telegram-@rchmanoffc-1A56DB?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/rchmanoffc)
-[![Channel](https://img.shields.io/badge/Channel-@richmanstudioss-8B5CF6?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/richmanstudioss)
+```
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║   ДАНИЛА КАПШУК  ·  Mobile Developer  ·  Хабаровск          ║
+║   ─────────────────────────────────────────────────         ║
+║   React Native  ·  TypeScript  ·  Expo  ·  FastAPI          ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+```
 
 </div>
 
+<br/>
+
+## `whoami`
+
+Мне 17 лет. Пишу код с 7 лет. Коммерческий опыт — с 2022 года.
+
+Специализация — полный цикл мобильной разработки: от проектирования архитектуры до публикации в App Store и Google Play. Работаю один как full-stack мобильный разработчик: frontend на React Native, backend на Python FastAPI, база MySQL.
+
+Текущий флагманский проект — **MeetRate**, мобильная социальная сеть которую я построил с нуля в одиночку.
+
+<br/>
+
+## `projects`
+
+### MeetRate — мобильная социальная сеть
+
+> iOS · Android · React Native · TypeScript · Expo · Python FastAPI · MySQL
+
+Полноценная социальная сеть с анонимным рейтингом пользователей. Разработана в одиночку с нуля.
+
+**Что внутри:**
+
+- `40+` REST API endpoints — лента, мессенджер, геолокация, лидерборд, настройки
+- Реальный мессенджер с поддержкой медиафайлов
+- Монетизация через RevenueCat — подписка MeetRate+
+- Push-уведомления `10+` типов через Expo Push
+- Мультиязычность — `ru` / `en` / `zh` через i18next
+- Дизайн-система с токенами, Reanimated v3
+- Готовится к публикации в App Store и Google Play
+
 ---
 
-<table>
-<tr>
-<td valign="top" width="50%">
+### tektonikadv.ru — коммерческий сайт
 
-### 👋 О себе
+> React · JavaScript · Node.js · CSS
+
+Сайт для рекламного агентства в Хабаровске. Полный цикл: проектирование, разработка, деплой.
+
+<br/>
+
+## `stack`
 
 ```typescript
-const danila: Developer = {
-  name:     "Данила Капшук",
-  alias:    "Daniel Richman",
-  age:      18,
-  city:     "Хабаровск, Россия",
-  
-  focus:    "Mobile Development",
-  stack:    ["React Native", "Expo", "TypeScript"],
-  backend:  ["Python FastAPI", "Node.js", "MySQL"],
-  
-  coding:   "since age 7",
-  commercial: "since 2022",
-
-  status:   "🟢 Открыт к проектам",
-};
+const stack = {
+  mobile:   ["React Native", "Expo", "TypeScript", "Reanimated v3"],
+  backend:  ["Python FastAPI", "Node.js", "MySQL", "REST API", "JWT"],
+  web:      ["React", "JavaScript", "HTML", "CSS"],
+  services: ["RevenueCat", "Expo Push", "i18next", "Git"],
+} as const;
 ```
 
-</td>
-<td valign="top" width="50%">
+<br/>
 
-### 🚀 Флагманский проект
-
-**[MeetRate](https://github.com/richmanstudio/meetrate)** — мобильная соцсеть
-
-```
-📱 iOS + Android       ⚡ 40+ API endpoints
-💬 Мессенджер          📍 Геолокация
-💳 RevenueCat          🔔 Push 10+ типов
-🌐 RU / EN / ZH        🎨 Reanimated v3
-```
-
-> Разработан в одиночку с нуля.
-> Backend на FastAPI + MySQL.
-> Готовится к релизу в App Store и Google Play.
-
-</td>
-</tr>
-</table>
-
----
-
-### 🛠 Стек
+## `stats`
 
 <div align="center">
 
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+<img height="155" src="https://github-readme-stats.vercel.app/api?username=richmanstudio&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&text_color=8b949e&count_private=true&include_all_commits=true&custom_title=GitHub+Stats" />
+&nbsp;&nbsp;
+<img height="155" src="https://github-readme-stats.vercel.app/api/top-langs/?username=richmanstudio&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=8b949e&langs_count=6&custom_title=Languages" />
 
 </div>
 
----
+<br/>
 
-### 📊 GitHub Stats
-
-<div align="center">
-<img height="160" src="https://github-readme-stats.vercel.app/api?username=richmanstudio&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=1A56DB&icon_color=8B5CF6&text_color=c7d9ff&count_private=true"/>
-<img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=richmanstudio&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=1A56DB&text_color=c7d9ff&langs_count=6"/>
-</div>
-
-<div align="center">
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=richmanstudio&theme=tokyonight&hide_border=true&background=0d1117&stroke=1A56DB&ring=8B5CF6&fire=8B5CF6&currStreakLabel=c7d9ff&sideLabels=c7d9ff&dates=6b7280" width="70%"/>
-</div>
-
----
-
-### 🐍 Contribution Graph
+## `contact`
 
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/richmanstudio/richmanstudio/output/github-contribution-grid-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/richmanstudio/richmanstudio/output/github-contribution-grid-snake.svg"/>
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/richmanstudio/richmanstudio/output/github-contribution-grid-snake-dark.svg"/>
-</picture>
+| | |
+|---|---|
+| **Telegram** | [@rchmanoffc](https://t.me/rchmanoffc) |
+| **Канал** | [@richmanstudioss](https://t.me/richmanstudioss) |
+| **Бренд** | Daniel Richman |
 
 </div>
 
----
-
-### 💼 Проекты
-
-| Проект | Стек | Описание |
-|--------|------|----------|
-| **MeetRate** | RN · TS · FastAPI · MySQL | Мобильная соцсеть с анонимным рейтингом, мессенджером и геолокацией |
-| **tektonikadv.ru** | React · JS · Node.js | Коммерческий сайт для рекламного агентства в Хабаровске |
+<br/>
 
 ---
 
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=1A56DB&height=100&section=footer&fontColor=ffffff" width="100%"/>
-
+<sub>Открыт к интересным проектам и предложениям</sub>
 </div>
