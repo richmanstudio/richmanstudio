@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДАНИЛА КАПШУК // ПОРТФОЛИО </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Fragment+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #eaeef2; /* холодный светлый фон */
+            background-image: radial-gradient(#000 1px, transparent 1px);
+            background-size: 32px 32px;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #111;
+            line-height: 1.2;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .brutal-card {
+            background: #fff;
+            border: 4px solid #000;
+            box-shadow: 12px 12px 0 0 #000;
+            padding: 2.2rem;
+            transition: transform 0.12s cubic-bezier(0,0,0.5,1), box-shadow 0.12s ease;
+            position: relative;
+        }
+
+        .brutal-card:hover {
+            transform: translate(-6px, -6px);
+            box-shadow: 18px 18px 0 0 #000;
+        }
+
+        .brutal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #ffdd44;
+            border: 3px solid #000;
+            padding: 0.5rem 1.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            box-shadow: 6px 6px 0 0 #000;
+            letter-spacing: -0.5px;
+        }
+
+        .brutal-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            border-bottom: 6px solid #000;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+        }
+
+        .brutal-subtitle {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            border-left: 10px solid #ff4444;
+            padding-left: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .icon {
+            display: inline-block;
+            width: 1.2em;
+            height: 1.2em;
+            background-color: currentColor;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            vertical-align: middle;
+        }
+
+        .icon-tg { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.98-2.23-1.57-.98-.68-.35-1.05.22-1.66.15-.15 2.72-2.5 2.77-2.71.01-.03.01-.14-.06-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.27-2.04-.49-.82-.27-1.47-.42-1.42-.89.03-.25.28-.5.77-.76 3.03-1.32 5.05-2.19 6.07-2.62 2.89-1.2 3.49-1.41 3.88-1.41.09 0 .28.02.41.13.1.09.13.21.14.31-.01.09-.02.29-.03.45z"/></svg>'); }
+        .icon-gh { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.03 1.54 1.03.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.66-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.14 20.16 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg>'); }
+        .icon-phone { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>'); }
+        .icon-mail { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>'); }
+        .icon-location { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>'); }
+        .icon-briefcase { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z"/></svg>'); }
+
+        /* техно-грид */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background: #111;
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #000;
+            box-shadow: 5px 5px 0 0 #ffdd44;
+            transition: 0.1s ease;
+            font-family: 'Fragment Mono', monospace;
+            text-transform: uppercase;
+        }
+
+        .tech-item:hover {
+            background: #ffdd44;
+            color: #000;
+            box-shadow: 7px 7px 0 0 #000;
+        }
+
+        /* кнопка с иконкой */
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: #000;
+            border: 3px solid #000;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 8px 8px 0 0 #ffdd44;
+            transition: 0.1s ease;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-button:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 12px 12px 0 0 #ffdd44;
+        }
+
+        /* статистика */
+        .stat-grid {
+            display: flex;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1 1 180px;
+            background: #ff4444;
+            border: 4px solid #000;
+            padding: 1.8rem 0.5rem;
+            text-align: center;
+            box-shadow: 10px 10px 0 0 #000;
+            transition: 0.1s ease;
+        }
+
+        .stat-item:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 14px 14px 0 0 #000;
+        }
+
+        .stat-number {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -4px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-top: 4px solid #000;
+            padding-top: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* проекты */
+        .project-card {
+            background: #c8f0f0;
+            border: 4px solid #000;
+            padding: 2rem;
+            box-shadow: 12px 12px 0 0 #000;
+            margin-bottom: 2rem;
+            transition: 0.1s ease;
+        }
+
+        .project-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 16px 16px 0 0 #000;
+        }
+
+        .project-card:last-child { margin-bottom: 0; }
+
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            border-bottom: 4px solid #000;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .project-year {
+            font-size: 1.3rem;
+            background: #000;
+            color: #fff;
+            padding: 0.2rem 1rem;
+            font-family: 'Fragment Mono', monospace;
+        }
+
+        /* сетка 2 колонки */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        /* футер контактов */
+        .contacts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-line {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: #fff;
+            border: 3px solid #000;
+            padding: 0.5rem 1.5rem;
+            box-shadow: 6px 6px 0 0 #000;
+        }
+
+        /* адаптив */
+        @media (max-width: 800px) {
+            body { padding: 1rem; }
+            .brutal-title { font-size: 3rem; }
+            .two-columns { grid-template-columns: 1fr; }
+            .stat-grid { flex-direction: column; }
+            .contacts-grid { flex-direction: column; align-items: start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ХЕДЕР -->
+        <header class="brutal-card" style="background: #f9e76b;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem;">
+                <div>
+                    <h1 class="brutal-title">ДАНИЛА<br>КАПШУК</h1>
+                    <div class="brutal-badge" style="background: #ff8899;">
+                        <span>⚡</span> React Native · FullStack
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="contact-line" style="background: #000; color: #fff; border-color: #fff; box-shadow: 6px 6px 0 0 #fff;">
+                        <span class="icon icon-phone" style="background: #ffdd44;"></span> +7 914 409-24-54
+                    </div>
+                    <div style="display: flex; gap: 0.8rem; margin-top: 1rem; justify-content: flex-end;">
+                        <span class="contact-line" style="background: #fff;"><span class="icon icon-tg" style="background: #000;"></span> @rchmanoffc</span>
+                        <span class="contact-line" style="background: #fff;">Telegram</span>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 1.6rem; font-weight: 500; margin-top: 2rem; max-width: 70%; border-left: 6px solid #000; padding-left: 1.2rem;">
+                Самоучка с 7 лет. Коммерческий опыт с 2022. Полный цикл — от переговоров до деплоя.
+            </p>
+        </header>
+
+        <!-- СТАТИСТИКА -->
+        <div class="stat-grid">
+            <div class="stat-item" style="background: #ffb347;"><div class="stat-number">7л</div><div class="stat-label">в программировании</div></div>
+            <div class="stat-item" style="background: #7ae0c0;"><div class="stat-number">40+</div><div class="stat-label">API эндпоинтов</div></div>
+            <div class="stat-item" style="background: #f08080;"><div class="stat-number">3г</div><div class="stat-label">коммерческого опыта</div></div>
+        </div>
+
+        <!-- ПРОЕКТЫ И СТЕК -->
+        <div class="two-columns">
+            <!-- левая колонка: проекты -->
+            <div>
+                <h2 class="brutal-subtitle"><span>●</span> ПРОЕКТЫ</h2>
+                <div class="project-card" style="background: #cdf0cb;">
+                    <div class="project-title">MeetRate <span class="project-year">2024–2025</span></div>
+                    <p style="font-weight: 700;">Собственный продукт · Мобильная социальная сеть</p>
+                    <p style="margin: 0.8rem 0;">Разработал в одиночку с нуля — архитектура, дизайн-система, backend, DevOps. MVP на Android.</p>
+                    <ul style="margin-left: 1.8rem;">
+                        <li>40+ API-эндпоинтов: лента, мессенджер, геолокация, лидерборд</li>
+                        <li>Онлайн-оплата и подписка MeetRate+ через RevenueCat</li>
+                        <li>Push-уведомления 10+ типов, мультиязычность ru/en/zh, QR-коды HMAC-SHA256</li>
+                        <li>Анонимный рейтинг, stagger-анимации Reanimated v3, дизайн-система с токенами</li>
+                    </ul>
+                    <div class="tech-grid" style="margin-top: 1rem;">
+                        <span class="tech-item">React Native</span><span class="tech-item">TypeScript</span><span class="tech-item">Expo</span><span class="tech-item">FastAPI</span><span class="tech-item">MySQL</span><span class="tech-item">RevenueCat</span><span class="tech-item">Reanimated</span>
+                    </div>
+                </div>
+
+                <div class="project-card" style="background: #ffdab3;">
+                    <div class="project-title">tektonikadv.ru <span class="project-year">2022–2024</span></div>
+                    <p style="font-weight: 700;">Коммерческий сайт · Рекламное агентство · Хабаровск</p>
+                    <p style="margin: 0.8rem 0;">Полный цикл: переговоры → дизайн → вёрстка → деплой → поддержка.</p>
+                    <ul style="margin-left: 1.8rem;">
+                        <li>Адаптивная вёрстка, оптимизация под мобильные</li>
+                        <li>Интеграция Telegram-бота для уведомлений о заявках</li>
+                        <li>Работа с реальным клиентом и бюджетом, сдача в срок</li>
+                    </ul>
+                    <div class="tech-grid" style="margin-top: 1rem;">
+                        <span class="tech-item">TypeScript</span><span class="tech-item">React</span><span class="tech-item">Python</span><span class="tech-item">Telegram API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- правая колонка: стек + языки -->
+            <div>
+                <div class="brutal-card" style="background: #cae0ff;">
+                    <h2 class="brutal-subtitle" style="border-left-color: #000;"><span>⎔</span> ПОЛНЫЙ СТЕК</h2>
+                    <div class="tech-grid">
+                        <span class="tech-item">React Native</span><span class="tech-item">React</span><span class="tech-item">TypeScript</span>
+                        <span class="tech-item">Expo</span><span class="tech-item">FastAPI</span><span class="tech-item">Node.js</span>
+                        <span class="tech-item">Python</span><span class="tech-item">MySQL</span><span class="tech-item">PostgreSQL</span>
+                        <span class="tech-item">Docker</span><span class="tech-item">REST API</span><span class="tech-item">JWT</span>
+                        <span class="tech-item">Git</span><span class="tech-item">RevenueCat</span><span class="tech-item">Reanimated v3</span>
+                        <span class="tech-item">i18next</span><span class="tech-item">SecureStore</span><span class="tech-item">HTML5/CSS3</span>
+                        <span class="tech-item">Docker-compose</span><span class="tech-item">GitHub</span><span class="tech-item">FastAPI</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="brutal-card" style="background: #fbe4b0; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                        <span style="font-size: 2.8rem; font-weight: 800;">C2</span>
+                        <span style="font-size: 1.8rem;">Английский — в совершенстве</span>
+                    </div>
+                    <div style="background: #000; color: #fff; border: 4px solid #000; box-shadow: 10px 10px 0 0 #ffdd44; padding: 1.8rem;">
+                        <div style="font-size: 2rem; font-weight: 700;">17 лет</div>
+                        <div style="font-size: 1.2rem;">Fullstack-разработчик</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- КОНТАКТЫ С SVG -->
+        <footer class="brutal-card" style="background: #d6d6f0; margin-top: 1rem;">
+            <div class="contacts-grid">
+                <div style="flex: 2;">
+                    <h2 class="brutal-subtitle" style="border-left: none; border-bottom: 6px solid #000; padding-left: 0;">СВЯЗЬ</h2>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="contact-line"><span class="icon icon-phone"></span> +7 (914) 409-24-54</div>
+                        <div class="contact-line"><span class="icon icon-mail"></span> danrichev@vk.com</div>
+                        <div class="contact-line"><span class="icon icon-tg"></span> @rchmanoffc</div>
+                        <div class="contact-line"><span class="icon icon-gh"></span> github.com/richmanstudio/</div>
+                    </div>
+                </div>
+                <div style="flex: 1; background: #fff; border: 4px solid #000; padding: 1.8rem; box-shadow: 8px 8px 0 0 #000;">
+                    <div style="display: flex; align-items: center; gap: 0.8rem;"><span class="icon icon-location" style="background: #000;"></span> <strong>Хабаровск</strong></div>
+                    <p style="margin-top: 0.8rem;">готов к редким командировкам</p>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; margin-top: 1.2rem;"><span class="icon icon-briefcase" style="background: #000;"></span> <strong>ТЕКТОНИКА</strong></div>
+                    <p>ведущий разработчик · 9 мес.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2.5rem; border-top: 4px solid #000; padding-top: 1.2rem; text-align: center; font-family: 'Fragment Mono';">
+                © 2025 ДАНИЛА КАПШУК ·
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
