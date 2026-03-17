@@ -24,13 +24,11 @@
         ::-webkit-scrollbar-thumb {
             background: var(--black);
             border-left: 3px solid var(--black);
-            transition: background .15s;
         }
         ::-webkit-scrollbar-thumb:hover { background: var(--yellow); }
-        ::-webkit-scrollbar-corner { background: var(--black); }
 
         /* Firefox */
-        * { scrollbar-width: thin; scrollbar-color: var(--black) var(--white); }
+        html { scrollbar-width: thin; scrollbar-color: var(--black) var(--white); }
 
         :root {
             --black:  #0a0a0a;
@@ -47,7 +45,7 @@
             --lg:     16px 16px 0 var(--black);
         }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: auto; }
 
         body {
             background: var(--white);
@@ -780,6 +778,31 @@
         });
     }, { threshold: 0.4 });
     document.querySelectorAll('.stat-num[data-target]').forEach(el => cio.observe(el));
+
+    /* ── smooth scroll ── */
+    (function () {
+        let current = window.scrollY;
+        let target  = window.scrollY;
+        const EASE  = 0.09; // плавность: меньше = медленнее
+
+        window.addEventListener('wheel', e => {
+            e.preventDefault();
+            target += e.deltaY * 0.8;
+            target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
+        }, { passive: false });
+
+        function tick() {
+            const diff = target - current;
+            if (Math.abs(diff) > 0.3) {
+                current += diff * EASE;
+                window.scrollTo(0, current);
+            } else {
+                current = target;
+            }
+            requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    })();
 </script>
 </body>
 </html>
