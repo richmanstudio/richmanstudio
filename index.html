@@ -13,6 +13,25 @@
         ============================================================ */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* ============================================================
+           SCROLLBAR
+        ============================================================ */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track {
+            background: var(--white);
+            border-left: 3px solid var(--black);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--black);
+            border-left: 3px solid var(--black);
+            transition: background .15s;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--yellow); }
+        ::-webkit-scrollbar-corner { background: var(--black); }
+
+        /* Firefox */
+        * { scrollbar-width: thin; scrollbar-color: var(--black) var(--white); }
+
         :root {
             --black:  #0a0a0a;
             --white:  #f5f0e8;
@@ -606,11 +625,11 @@
                 <h3 class="p-name">tektonikadv.ru</h3>
                 <div class="p-badges">
                     <span class="badge">Коммерческий заказ</span>
-                    <span class="badge">Рекламное агентство</span>
+                    <span class="badge">Геофизическая компания</span>
                     <span class="badge">Хабаровск</span>
                 </div>
                 <p class="p-desc">
-                    Корпоративный сайт рекламного агентства. Полный цикл: переговоры,
+                    Корпоративный сайт геофизической компании. Полный цикл: переговоры,
                     дизайн, вёрстка, деплой, техподдержка. Сдан в срок.
                 </p>
                 <div class="p-feats">
