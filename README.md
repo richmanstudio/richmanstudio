@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=slice&color=0:0d1117,50:1a1f35,100:0d1117&height=180&section=header&text=Данила%20Капшук&fontSize=52&fontColor=58a6ff&fontAlignY=65&rotate=-3&desc=Mobile%20Developer%20·%2017%20y.o.%20·%20Khabarovsk&descSize=15&descFontColor=8b949e&descAlignY=82" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=slice&color=0:0d1117,50:1a1f35,100:0d1117&height=180&section=header&text=Данила%20Капшук&fontSize=52&fontColor=58a6ff&fontAlignY=65&rotate=-3&desc=Mobile%20Developer%20·%2018%20y.o.%20·%20Khabarovsk&descSize=15&descFontColor=8b949e&descAlignY=82" width="100%"/>
 
 <div align="right">
   
