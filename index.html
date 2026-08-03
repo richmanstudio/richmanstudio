@@ -1,938 +1,163 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ДАНИЛА КАПШУК — РАЗРАБОТЧИК</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
-    <style>
-        /* ============================================================
-           RESET & VARS
-        ============================================================ */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* ============================================================
-           SCROLLBAR
-        ============================================================ */
-        ::-webkit-scrollbar { width: 12px; }
-        ::-webkit-scrollbar-track {
-            background: var(--white);
-            border-left: 3px solid var(--black);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--black);
-            border-left: 3px solid var(--black);
-        }
-        ::-webkit-scrollbar-thumb:hover { background: var(--yellow); }
-
-        /* Firefox */
-        html { scrollbar-width: thin; scrollbar-color: var(--black) var(--white); }
-
-        :root {
-            --black:  #0a0a0a;
-            --white:  #f5f0e8;
-            --yellow: #ffe500;
-            --red:    #ff2d2d;
-            --blue:   #0052ff;
-            --green:  #00e676;
-            --b:      3px solid var(--black);
-            --bw:     3px solid var(--white);
-            --bt:     5px solid var(--black);
-            --sm:     6px  6px  0 var(--black);
-            --md:     10px 10px 0 var(--black);
-            --lg:     16px 16px 0 var(--black);
-        }
-
-        html { scroll-behavior: auto; }
-
-        body {
-            background: var(--white);
-            background-image: radial-gradient(var(--black) 1px, transparent 1px);
-            background-size: 28px 28px;
-            font-family: 'Space Grotesk', sans-serif;
-            color: var(--black);
-            overflow-x: hidden;
-        }
-
-        /* ============================================================
-           CURSOR
-        ============================================================ */
-        @media (pointer: fine) {
-            * { cursor: none !important; }
-        }
-
-        #cursor {
-            width: 18px; height: 18px;
-            border: 3px solid var(--black);
-            background: var(--yellow);
-            position: fixed; top: 0; left: 0;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%,-50%);
-            transition: width .18s ease, height .18s ease, background .18s ease;
-            mix-blend-mode: multiply;
-        }
-        #cursor.big { width: 56px; height: 56px; }
-
-        /* ============================================================
-           NAV
-        ============================================================ */
-        nav {
-            position: sticky; top: 0; z-index: 100;
-            background: var(--black);
-            border-bottom: var(--bt);
-            padding: .75rem 2.5rem;
-            display: flex; justify-content: space-between; align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-logo {
-            font-family: 'Fragment Mono', monospace;
-            font-size: 1rem; font-weight: 700;
-            color: var(--white); text-transform: uppercase;
-            letter-spacing: .5px;
-        }
-
-        .nav-avail {
-            display: flex; align-items: center; gap: .5rem;
-            background: var(--green); color: var(--black);
-            border: 2px solid rgba(255,255,255,.25);
-            padding: .3rem 1rem;
-            font-size: .8rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: .5px;
-        }
-
-        .dot {
-            width: 7px; height: 7px;
-            background: var(--black); border-radius: 50%;
-            animation: blink 1.6s infinite;
-        }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
-
-        .nav-btn {
-            background: var(--yellow); color: var(--black);
-            border: 2px solid rgba(255,255,255,.3);
-            padding: .4rem 1.4rem;
-            font-size: .85rem; font-weight: 700;
-            text-decoration: none; text-transform: uppercase;
-            box-shadow: 4px 4px 0 rgba(255,255,255,.25);
-            transition: .1s;
-        }
-        .nav-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(255,255,255,.25); }
-
-        /* ============================================================
-           HERO
-        ============================================================ */
-        .hero {
-            padding: 4rem 2.5rem 3rem;
-            border-bottom: var(--bt);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-tag {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .8rem; text-transform: uppercase;
-            letter-spacing: 3px;
-            background: var(--red); color: var(--white);
-            border: 2px solid var(--black);
-            display: inline-block;
-            padding: .3rem 1rem;
-            margin-bottom: 1.8rem;
-            box-shadow: var(--sm);
-        }
-
-        h1 {
-            font-size: clamp(5.5rem, 13vw, 15rem);
-            font-weight: 800;
-            line-height: .85;
-            letter-spacing: -6px;
-            text-transform: uppercase;
-            margin-bottom: 3.5rem;
-        }
-
-        h1 .outline {
-            -webkit-text-stroke: 3px var(--black);
-            color: transparent;
-            display: block;
-        }
-        h1 .filled { display: block; }
-
-        .hero-foot {
-            display: flex;
-            justify-content: space-between; align-items: flex-end;
-            flex-wrap: wrap; gap: 2rem;
-        }
-
-        .hero-bio {
-            font-size: 1.35rem; font-weight: 500;
-            line-height: 1.5; max-width: 460px;
-            border-left: 5px solid var(--black);
-            padding-left: 1.2rem;
-        }
-
-        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-        .btn {
-            display: inline-flex; align-items: center; gap: .6rem;
-            border: var(--bt);
-            padding: .9rem 2.2rem;
-            font-size: 1rem; font-weight: 700;
-            text-transform: uppercase; text-decoration: none;
-            box-shadow: var(--md); transition: .1s;
-            letter-spacing: -.2px;
-        }
-        .btn:hover { transform: translate(-4px,-4px); box-shadow: 14px 14px 0 var(--black); }
-        .btn-dark  { background: var(--black); color: var(--yellow); }
-        .btn-accent{ background: var(--yellow); color: var(--black); }
-
-        /* ============================================================
-           TICKER
-        ============================================================ */
-        .ticker {
-            background: var(--yellow);
-            border-top: var(--bt); border-bottom: var(--bt);
-            padding: .8rem 0; overflow: hidden; white-space: nowrap;
-        }
-        .ticker-track {
-            display: inline-flex;
-            animation: slide 28s linear infinite;
-        }
-        .ticker-track:hover { animation-play-state: paused; }
-        .t-item {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .95rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: .5px;
-            padding: 0 1.8rem;
-            display: inline-flex; align-items: center; gap: 1.2rem;
-        }
-        .t-dot { color: var(--black); font-size: 1.2rem; }
-        @keyframes slide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-        /* ============================================================
-           STATS BAND
-        ============================================================ */
-        .stats-band {
-            background: var(--black);
-            border-bottom: var(--bt);
-        }
-        .stats-row {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(3,1fr);
-        }
-        .stat-cell {
-            padding: 3rem 2.5rem;
-            border-right: 1px solid rgba(255,255,255,.12);
-        }
-        .stat-cell:last-child { border-right: none; }
-        .stat-num {
-            font-size: clamp(4rem, 7vw, 7rem);
-            font-weight: 800; line-height: 1;
-            letter-spacing: -4px; color: var(--yellow);
-        }
-        .stat-desc {
-            margin-top: .5rem;
-            font-family: 'Fragment Mono', monospace;
-            font-size: .85rem; text-transform: uppercase;
-            letter-spacing: .5px;
-            color: rgba(245,240,232,.55);
-        }
-
-        /* ============================================================
-           SECTION SHELL
-        ============================================================ */
-        .wrap {
-            max-width: 1400px; margin: 0 auto;
-            padding: 4rem 2.5rem;
-        }
-        .sec-head {
-            display: flex; justify-content: space-between; align-items: baseline;
-            border-bottom: var(--bt); padding-bottom: 1rem; margin-bottom: 3rem;
-        }
-        .sec-title {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800; text-transform: uppercase; letter-spacing: -2px;
-        }
-        .sec-count {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .9rem; color: rgba(10,10,10,.4);
-            border: 2px solid var(--black); padding: .2rem .7rem;
-        }
-
-        /* ============================================================
-           PROJECTS
-        ============================================================ */
-        .project {
-            display: grid;
-            grid-template-columns: 70px 1fr 90px;
-            gap: 2.5rem; align-items: start;
-            padding: 2.5rem 1rem;
-            margin: 0 -1rem;
-            border-bottom: 3px solid var(--black);
-            transition: background .14s;
-        }
-        .project:hover { background: var(--yellow); }
-
-        .p-num {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .9rem; color: rgba(10,10,10,.3);
-            padding-top: .5rem;
-        }
-
-        .p-name {
-            font-size: clamp(2.2rem, 4.5vw, 4rem);
-            font-weight: 800; letter-spacing: -2.5px; line-height: .95;
-            margin-bottom: 1rem;
-        }
-
-        .p-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
-        .badge {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .75rem; font-weight: 700;
-            background: var(--black); color: var(--white);
-            padding: .2rem .7rem; text-transform: uppercase;
-        }
-        .badge.red { background: var(--red); }
-
-        .p-desc {
-            font-size: 1.05rem; font-weight: 400;
-            line-height: 1.55; max-width: 620px; margin-bottom: 1.2rem;
-        }
-
-        .p-feats { display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1.5rem; }
-        .p-feat {
-            font-size: .95rem; font-weight: 500;
-            display: flex; gap: .6rem;
-        }
-        .p-feat::before { content:'→'; color: var(--red); font-weight: 700; flex-shrink: 0; }
-
-        .p-tech { display: flex; flex-wrap: wrap; gap: .5rem; }
-        .chip {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .82rem; font-weight: 700;
-            border: 2px solid var(--black);
-            padding: .3rem .7rem; text-transform: uppercase;
-            transition: .12s;
-        }
-        .chip:hover { background: var(--black); color: var(--yellow); }
-
-        .p-year {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .9rem; font-weight: 700;
-            color: rgba(10,10,10,.45);
-            padding-top: .5rem; white-space: nowrap;
-            text-align: right;
-        }
-
-        /* ============================================================
-           SKILLS
-        ============================================================ */
-        .skills-sec {
-            background: var(--black);
-            border-top: var(--bt);
-            background-image: radial-gradient(rgba(255,229,0,.06) 1px, transparent 1px);
-            background-size: 28px 28px;
-        }
-        .skills-head {
-            display: flex; justify-content: space-between; align-items: baseline;
-            border-bottom: 2px solid rgba(255,255,255,.15);
-            padding-bottom: 1rem; margin-bottom: 2.5rem;
-        }
-        .skills-title {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800; text-transform: uppercase; letter-spacing: -2px;
-            color: var(--white);
-        }
-        .skills-c {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .9rem; color: rgba(255,255,255,.35);
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-            gap: .7rem;
-        }
-        .sk {
-            border: 2px solid rgba(255,255,255,.2);
-            color: var(--white); background: transparent;
-            padding: .75rem 1rem;
-            font-family: 'Fragment Mono', monospace;
-            font-size: .85rem; font-weight: 700;
-            text-transform: uppercase; text-align: center;
-            transition: .15s;
-        }
-        .sk:hover {
-            background: var(--yellow); color: var(--black);
-            border-color: var(--yellow);
-            transform: translate(-3px,-3px);
-            box-shadow: 3px 3px 0 rgba(255,229,0,.4);
-        }
-
-        /* ============================================================
-           ABOUT / DATA
-        ============================================================ */
-        .about-sec {
-            border-top: var(--bt); border-bottom: var(--bt);
-        }
-        .about-inner {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr;
-        }
-        .about-left {
-            padding: 4rem 2.5rem;
-            border-right: var(--bt);
-        }
-        .about-right {
-            padding: 4rem 2.5rem;
-            background: var(--yellow);
-        }
-        .about-h {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 800; text-transform: uppercase;
-            letter-spacing: -2px; margin-bottom: 1.5rem;
-        }
-        .about-text {
-            font-size: 1.1rem; line-height: 1.65; font-weight: 400;
-        }
-        .about-text b { font-weight: 800; }
-
-        .data-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 0; }
-        .data-row {
-            display: flex; align-items: center; gap: 1rem;
-            background: var(--white); border: var(--b);
-            padding: .8rem 1.2rem; box-shadow: var(--sm);
-            font-size: 1rem; font-weight: 600;
-        }
-        .data-key {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .75rem; text-transform: uppercase;
-            color: rgba(10,10,10,.45); min-width: 90px;
-        }
-
-        /* ============================================================
-           CONTACT
-        ============================================================ */
-        .contact-sec {
-            background: var(--red); border-bottom: var(--bt);
-        }
-        .contact-inner {
-            max-width: 1400px; margin: 0 auto;
-            padding: 4rem 2.5rem;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 3rem; align-items: center;
-        }
-        .contact-h {
-            font-size: clamp(3.5rem, 8vw, 9rem);
-            font-weight: 800; text-transform: uppercase;
-            letter-spacing: -4px; line-height: .85;
-            color: var(--white);
-        }
-        .contact-h .co {
-            -webkit-text-stroke: 3px var(--white);
-            color: transparent;
-        }
-        .clinks { display: flex; flex-direction: column; gap: .9rem; }
-        .clink {
-            display: flex; align-items: center; gap: 1.2rem;
-            background: var(--white); border: var(--b);
-            padding: .9rem 1.4rem;
-            font-size: 1rem; font-weight: 700;
-            text-decoration: none; color: var(--black);
-            text-transform: uppercase; box-shadow: var(--sm);
-            transition: .1s;
-        }
-        .clink:hover {
-            transform: translate(-4px,-4px);
-            box-shadow: var(--md); background: var(--yellow);
-        }
-        .clink svg { flex-shrink: 0; }
-
-        /* ============================================================
-           FOOTER
-        ============================================================ */
-        footer {
-            background: var(--black);
-            padding: 1.4rem 2.5rem;
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: .5rem;
-        }
-        .foot-txt {
-            font-family: 'Fragment Mono', monospace;
-            font-size: .8rem; text-transform: uppercase;
-            color: rgba(245,240,232,.4);
-        }
-
-        /* ============================================================
-           SCROLL REVEAL
-        ============================================================ */
-        .r { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
-        .r.on { opacity: 1; transform: translateY(0); }
-
-        /* ============================================================
-           PROGRESS BAR  [3]
-        ============================================================ */
-        #progress-bar {
-            position: fixed; top: 0; left: 0; z-index: 9997;
-            height: 4px; width: 0%;
-            background: var(--yellow);
-            border-right: 2px solid var(--black);
-            pointer-events: none;
-        }
-
-        /* ============================================================
-           HERO STAGGER  [4]
-        ============================================================ */
-        h1 .char {
-            display: inline-block;
-            animation: charIn .55s cubic-bezier(.16,1,.3,1) both;
-        }
-        @keyframes charIn {
-            from { opacity: 0; transform: translateY(50px) rotate(-4deg); }
-            to   { opacity: 1; transform: translateY(0)    rotate(0deg); }
-        }
-
-        /* ============================================================
-           REVERSE TICKER  [6]
-        ============================================================ */
-        .ticker-rev {
-            background: var(--black);
-            border-bottom: var(--bt);
-        }
-        .ticker-rev .t-item { color: var(--white); }
-        .ticker-rev .t-dot  { color: var(--yellow); }
-        .ticker-rev .ticker-track {
-            animation: slide-rev 32s linear infinite;
-        }
-        @keyframes slide-rev {
-            from { transform: translateX(-50%); }
-            to   { transform: translateX(0); }
-        }
-
-        /* ============================================================
-           CURSOR TRAIL  [7]
-        ============================================================ */
-        .cur-trail {
-            position: fixed; pointer-events: none; z-index: 9990;
-            background: var(--yellow); border: 2px solid var(--black);
-            transform: translate(-50%,-50%);
-        }
-
-        /* ============================================================
-           NOISE TEXTURE  [8]
-        ============================================================ */
-        body::after {
-            content: '';
-            position: fixed; inset: 0; z-index: 9985;
-            pointer-events: none;
-            opacity: .038;
-            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='250' height='250'><filter id='n' x='0' y='0'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='250' height='250' filter='url(%23n)'/></svg>");
-            background-size: 180px 180px;
-        }
-
-        /* ============================================================
-           RESPONSIVE
-        ============================================================ */
-        @media (max-width: 900px) {
-            .stats-row { grid-template-columns: 1fr; }
-            .stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
-            .project { grid-template-columns: 48px 1fr; }
-            .p-year { display: none; }
-            .about-inner { grid-template-columns: 1fr; }
-            .about-left { border-right: none; border-bottom: var(--bt); }
-            .contact-inner { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 600px) {
-            nav { padding: .7rem 1.2rem; }
-            .nav-avail { display: none; }
-            .hero { padding: 2.5rem 1.2rem 2.5rem; }
-            h1 { letter-spacing: -3px; }
-            .wrap { padding: 3rem 1.2rem; }
-            .project { grid-template-columns: 1fr; gap: .8rem; }
-            .p-num { display: none; }
-            .about-left, .about-right { padding: 2.5rem 1.2rem; }
-            .contact-inner { padding: 2.5rem 1.2rem; }
-            footer { padding: 1.2rem; flex-direction: column; text-align: center; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Danila Kapshuk — product engineer and DUONIQ co-founder. Websites, SaaS, internal systems and automation built end to end.">
+  <meta name="theme-color" content="#080a08">
+  <meta property="og:title" content="Danila Kapshuk — Product Engineer">
+  <meta property="og:description" content="I design and build digital products that remove friction from real business.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-cover.svg">
+  <title>Danila Kapshuk — Product Engineer</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
-<div id="progress-bar"></div>
-<div id="cursor"></div>
-
-<!-- ─── NAV ─── -->
-<nav>
-    <span class="nav-logo">DK // Portfolio</span>
-    <div class="nav-avail"><span class="dot"></span>Открыт для работы</div>
-    <a href="https://t.me/rchmanoffc" class="nav-btn" target="_blank">Написать →</a>
-</nav>
-
-<!-- ─── HERO ─── -->
-<section class="hero">
-    <p class="hero-tag">Fullstack · React Native · 18 лет · Хабаровск</p>
-    <h1>
-        <span class="filled">ДАНИЛА</span>
-        <span class="outline">КАПШУК</span>
-    </h1>
-    <div class="hero-foot">
-        <p class="hero-bio">
-            Самоучка с 7 лет.<br>
-            Коммерческий опыт с 2022.<br>
-            Полный цикл — от переговоров до деплоя.
-        </p>
-        <div class="btn-group">
-            <a href="https://t.me/rchmanoffc" class="btn btn-dark" target="_blank">Написать в Telegram ↗</a>
-            <a href="https://github.com/richmanstudio" class="btn btn-accent" target="_blank">GitHub →</a>
-        </div>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Danila — home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 3h15c12 0 19 6.5 19 17S30 37 18 37H3V3Zm9 8v18h6c6.3 0 10-2.7 10-9s-3.7-9-10-9h-6Z"/></svg>
+      <span>Danila<span class="brand-dot">.</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#expertise" data-i18n="nav.expertise">Expertise</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-switch" type="button" data-lang aria-label="Switch language"><span>EN</span><span>RU</span></button>
+      <a class="header-cta magnetic" href="#contact"><span data-i18n="nav.contact">Start a project</span><span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
     </div>
-</section>
+  </header>
 
-<!-- ─── TICKER ─── -->
-<div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-        <span class="t-item">React Native<span class="t-dot">✦</span></span>
-        <span class="t-item">TypeScript<span class="t-dot">✦</span></span>
-        <span class="t-item">FastAPI<span class="t-dot">✦</span></span>
-        <span class="t-item">Python<span class="t-dot">✦</span></span>
-        <span class="t-item">MySQL<span class="t-dot">✦</span></span>
-        <span class="t-item">Docker<span class="t-dot">✦</span></span>
-        <span class="t-item">Expo<span class="t-dot">✦</span></span>
-        <span class="t-item">Node.js<span class="t-dot">✦</span></span>
-        <span class="t-item">REST API<span class="t-dot">✦</span></span>
-        <span class="t-item">Reanimated v3<span class="t-dot">✦</span></span>
-        <span class="t-item">RevenueCat<span class="t-dot">✦</span></span>
-        <span class="t-item">JWT<span class="t-dot">✦</span></span>
-        <!-- duplicate for seamless loop -->
-        <span class="t-item">React Native<span class="t-dot">✦</span></span>
-        <span class="t-item">TypeScript<span class="t-dot">✦</span></span>
-        <span class="t-item">FastAPI<span class="t-dot">✦</span></span>
-        <span class="t-item">Python<span class="t-dot">✦</span></span>
-        <span class="t-item">MySQL<span class="t-dot">✦</span></span>
-        <span class="t-item">Docker<span class="t-dot">✦</span></span>
-        <span class="t-item">Expo<span class="t-dot">✦</span></span>
-        <span class="t-item">Node.js<span class="t-dot">✦</span></span>
-        <span class="t-item">REST API<span class="t-dot">✦</span></span>
-        <span class="t-item">Reanimated v3<span class="t-dot">✦</span></span>
-        <span class="t-item">RevenueCat<span class="t-dot">✦</span></span>
-        <span class="t-item">JWT<span class="t-dot">✦</span></span>
-    </div>
-</div>
+  <div class="mobile-menu" data-mobile-menu inert>
+    <nav aria-label="Mobile navigation">
+      <a href="#work"><span>01</span><span data-i18n="nav.work">Work</span></a>
+      <a href="#expertise"><span>02</span><span data-i18n="nav.expertise">Expertise</span></a>
+      <a href="#about"><span>03</span><span data-i18n="nav.about">About</span></a>
+      <a href="#contact"><span>04</span><span data-i18n="nav.contact">Start a project</span></a>
+    </nav>
+    <div class="mobile-menu-foot"><a href="https://t.me/rchmanoffc">Telegram</a><a href="mailto:danrichevv@vk.com">Email</a></div>
+  </div>
 
-<!-- ─── STATS ─── -->
-<section class="stats-band">
-    <div class="stats-row">
-        <div class="stat-cell r">
-            <div class="stat-num" data-target="7" data-suffix="л">0</div>
-            <div class="stat-desc">лет в программировании</div>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-topline reveal">
+        <p class="eyebrow"><span class="status-dot"></span><span data-i18n="hero.availability">Available for selected projects</span></p>
+        <p class="hero-location">Khabarovsk · <span data-clock>GMT+10</span></p>
+      </div>
+      <div class="hero-title-wrap">
+        <h1 class="hero-title">
+          <span class="title-line title-line-1"><span data-i18n="hero.line1">Digital product</span></span>
+          <span class="title-line title-line-2"><span class="hero-glyph" aria-hidden="true">✳</span><span data-i18n="hero.line2">engineer</span><sup>01</sup></span>
+        </h1>
+      </div>
+      <div class="hero-bottom reveal">
+        <p class="hero-copy" data-i18n="hero.copy">I turn business complexity into fast, clear and maintainable digital products — from first hypothesis to production.</p>
+        <div class="hero-links">
+          <a class="text-link" href="#work"><span data-i18n="hero.cta">Explore selected work</span><span class="arrow">↓</span></a>
+          <a class="icon-link" href="https://github.com/richmanstudio" target="_blank" rel="noreferrer" aria-label="GitHub">GH ↗</a>
         </div>
-        <div class="stat-cell r">
-            <div class="stat-num" data-target="40" data-suffix="+">0</div>
-            <div class="stat-desc">API эндпоинтов в MeetRate</div>
-        </div>
-        <div class="stat-cell r">
-            <div class="stat-num" data-target="3" data-suffix="г">0</div>
-            <div class="stat-desc">года коммерческого опыта</div>
-        </div>
-    </div>
-</section>
+      </div>
+      <div class="hero-index" aria-hidden="true">DK / 2026</div>
+    </section>
 
-<!-- ─── REVERSE TICKER  [6] ─── -->
-<div class="ticker ticker-rev" aria-hidden="true">
-    <div class="ticker-track">
-        <span class="t-item">Fullstack Developer<span class="t-dot">✦</span></span>
-        <span class="t-item">React Native<span class="t-dot">✦</span></span>
-        <span class="t-item">Mobile Apps<span class="t-dot">✦</span></span>
-        <span class="t-item">Backend API<span class="t-dot">✦</span></span>
-        <span class="t-item">UI Design<span class="t-dot">✦</span></span>
-        <span class="t-item">DevOps<span class="t-dot">✦</span></span>
-        <span class="t-item">Open To Work<span class="t-dot">✦</span></span>
-        <span class="t-item">18 лет<span class="t-dot">✦</span></span>
-        <span class="t-item">Хабаровск<span class="t-dot">✦</span></span>
-        <span class="t-item">C2 English<span class="t-dot">✦</span></span>
-        <span class="t-item">Fullstack Developer<span class="t-dot">✦</span></span>
-        <span class="t-item">React Native<span class="t-dot">✦</span></span>
-        <span class="t-item">Mobile Apps<span class="t-dot">✦</span></span>
-        <span class="t-item">Backend API<span class="t-dot">✦</span></span>
-        <span class="t-item">UI Design<span class="t-dot">✦</span></span>
-        <span class="t-item">DevOps<span class="t-dot">✦</span></span>
-        <span class="t-item">Open To Work<span class="t-dot">✦</span></span>
-        <span class="t-item">18 лет<span class="t-dot">✦</span></span>
-        <span class="t-item">Хабаровск<span class="t-dot">✦</span></span>
-        <span class="t-item">C2 English<span class="t-dot">✦</span></span>
-    </div>
-</div>
+    <section class="proof" aria-label="Experience highlights">
+      <div class="proof-item reveal"><strong>7+</strong><span data-i18n="proof.years">years in programming</span></div>
+      <div class="proof-item reveal"><strong>3+</strong><span data-i18n="proof.commercial">years of commercial practice</span></div>
+      <div class="proof-item reveal"><strong>360°</strong><span data-i18n="proof.scope">product thinking &amp; engineering</span></div>
+      <div class="proof-note reveal"><span>DUONIQ®</span><span data-i18n="proof.founder">Co-founder / Engineering</span></div>
+    </section>
 
-<!-- ─── PROJECTS ─── -->
-<section>
-    <div class="wrap">
-        <div class="sec-head r">
-            <h2 class="sec-title">Проекты</h2>
-            <span class="sec-count">02</span>
-        </div>
+    <section class="work section" id="work">
+      <div class="section-head reveal">
+        <div><p class="section-kicker">01 / <span data-i18n="work.kicker">Selected work</span></p><h2 data-i18n="work.title">Systems with a reason<br>to exist.</h2></div>
+        <p class="section-intro" data-i18n="work.intro">A selection of products where interface, architecture and business logic work as one system.</p>
+      </div>
 
-        <article class="project r">
-            <div class="p-num">01</div>
-            <div>
-                <h3 class="p-name">MeetRate</h3>
-                <div class="p-badges">
-                    <span class="badge red">Собственный продукт</span>
-                    <span class="badge">Мобильное приложение</span>
-                    <span class="badge">Android</span>
-                </div>
-                <p class="p-desc">
-                    Социальная сеть с анонимным рейтингом людей. Разработал в одиночку с нуля —
-                    архитектура, дизайн-система, бэкенд и DevOps. MVP выпущен на Android.
-                </p>
-                <div class="p-feats">
-                    <div class="p-feat">40+ API-эндпоинтов: лента, мессенджер, геолокация, лидерборд</div>
-                    <div class="p-feat">Онлайн-оплата и подписка MeetRate+ через RevenueCat</div>
-                    <div class="p-feat">Push-уведомления 10+ типов, мультиязычность ru / en / zh</div>
-                    <div class="p-feat">QR-коды HMAC-SHA256, stagger-анимации Reanimated v3</div>
-                </div>
-                <div class="p-tech">
-                    <span class="chip">React Native</span>
-                    <span class="chip">TypeScript</span>
-                    <span class="chip">Expo</span>
-                    <span class="chip">FastAPI</span>
-                    <span class="chip">MySQL</span>
-                    <span class="chip">RevenueCat</span>
-                    <span class="chip">Reanimated v3</span>
-                </div>
+      <article class="case case-featured reveal">
+        <a class="case-visual resportal-visual" href="https://github.com/richmanstudio/resportal" target="_blank" rel="noreferrer" aria-label="View RESPORTAL on GitHub">
+          <div class="mock-window">
+            <div class="mock-sidebar">
+              <div class="mock-logo">Р</div><i></i><i></i><i></i><i></i><i></i><span></span>
             </div>
-            <div class="p-year">2024–<br>2025</div>
+            <div class="mock-main">
+              <div class="mock-bar"><span>Dashboard</span><div class="mock-avatar">DK</div></div>
+              <div class="mock-welcome"><small>GOOD MORNING, DANILA</small><strong>12 active cases</strong><em>+ New case</em></div>
+              <div class="mock-metrics"><div><small>CLIENTS</small><b>48</b><span>↗ 12%</span></div><div><small>UPCOMING</small><b>07</b><span>This week</span></div><div><small>DOCUMENTS</small><b>126</b><span>All secured</span></div></div>
+              <div class="mock-table"><div><span>RECENT CASES</span><span>STATUS</span><span>DEADLINE</span></div><div><b>Commercial dispute</b><mark>In progress</mark><span>12 Aug</span></div><div><b>Contract review</b><mark>Review</mark><span>18 Aug</span></div><div><b>Property claim</b><mark>Filed</mark><span>25 Aug</span></div></div>
+            </div>
+          </div>
+          <span class="case-number">01</span>
+        </a>
+        <div class="case-info">
+          <div><p class="case-type" data-i18n="cases.resportal.type">LegalTech · SaaS platform</p><h3>РЕСПОРТАЛ</h3></div>
+          <p data-i18n="cases.resportal.copy">A focused workspace for lawyers: clients, cases, documents, procedural deadlines, teams and subscription billing in one product.</p>
+          <ul class="tag-list"><li>React</li><li>TypeScript</li><li>PostgreSQL</li><li>Prisma</li><li>Docker</li></ul>
+          <a class="case-link" href="https://github.com/richmanstudio/resportal" target="_blank" rel="noreferrer"><span data-i18n="cases.view">View project</span><span>↗</span></a>
+        </div>
+      </article>
+
+      <div class="case-grid">
+        <article class="case case-half reveal">
+          <a class="case-visual deploy-visual" href="https://github.com/richmanstudio/go-deploy" target="_blank" rel="noreferrer" aria-label="View GO-DEPLOY on GitHub">
+            <div class="terminal"><div class="terminal-head"><span>● ● ●</span><span>go-deploy — production</span></div><div class="terminal-body"><p><i>$</i> go-deploy deploy --server production</p><p class="dim">◆ Reading deploy.yaml</p><p><b>✓</b> Connected to production</p><p><b>✓</b> Pull latest code <em>1.2s</em></p><p><b>✓</b> Build application <em>8.4s</em></p><p><b>✓</b> Health check <em>0.3s</em></p><p class="success">Deployment completed successfully.</p></div></div>
+            <span class="case-number">02</span>
+          </a>
+          <div class="case-info"><div><p class="case-type" data-i18n="cases.deploy.type">DevTools · Open source CLI</p><h3>GO-DEPLOY</h3></div><p data-i18n="cases.deploy.copy">Production-oriented Go CLI for repeatable SSH deployments, dry runs and automatic rollback on failure.</p><ul class="tag-list"><li>Go</li><li>SSH</li><li>YAML</li><li>CI/CD</li></ul><a class="case-link" href="https://github.com/richmanstudio/go-deploy" target="_blank" rel="noreferrer"><span data-i18n="cases.view">View project</span><span>↗</span></a></div>
         </article>
 
-        <article class="project r">
-            <div class="p-num">02</div>
-            <div>
-                <h3 class="p-name">tektonikadv.ru</h3>
-                <div class="p-badges">
-                    <span class="badge">Коммерческий заказ</span>
-                    <span class="badge">Геофизическая компания</span>
-                    <span class="badge">Хабаровск</span>
-                </div>
-                <p class="p-desc">
-                    Корпоративный сайт геофизической компании. Полный цикл: переговоры,
-                    дизайн, вёрстка, деплой, техподдержка. Сдан в срок.
-                </p>
-                <div class="p-feats">
-                    <div class="p-feat">Адаптивная вёрстка, мобильная оптимизация</div>
-                    <div class="p-feat">Telegram-бот для уведомлений о заявках</div>
-                    <div class="p-feat">Реальный клиент, реальный бюджет, жёсткие дедлайны</div>
-                </div>
-                <div class="p-tech">
-                    <span class="chip">TypeScript</span>
-                    <span class="chip">React</span>
-                    <span class="chip">Python</span>
-                    <span class="chip">Telegram API</span>
-                </div>
-            </div>
-            <div class="p-year">2022–<br>2024</div>
+        <article class="case case-half reveal">
+          <a class="case-visual bookverse-visual" href="https://github.com/richmanstudio/bookverse" target="_blank" rel="noreferrer" aria-label="View BOOKVERSE on GitHub">
+            <div class="book-ui"><div class="book-top"><b>BOOKVERSE</b><span>Search / Profile</span></div><div class="book-content"><div class="book-copy"><small>CURRENTLY READING</small><strong>The<br>Creative<br>Act</strong><span>Rick Rubin</span><div class="book-progress"><i></i></div><em>64% complete</em></div><div class="book-cover"><span>THE<br>CREATIVE<br>ACT</span><small>A WAY OF BEING</small></div></div></div>
+            <span class="case-number">03</span>
+          </a>
+          <div class="case-info"><div><p class="case-type" data-i18n="cases.bookverse.type">Social product · Web app</p><h3>BOOKVERSE</h3></div><p data-i18n="cases.bookverse.copy">A social reading product with shelves, reviews, activity feed, discovery, statistics and achievements.</p><ul class="tag-list"><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Docker</li></ul><a class="case-link" href="https://github.com/richmanstudio/bookverse" target="_blank" rel="noreferrer"><span data-i18n="cases.view">View project</span><span>↗</span></a></div>
         </article>
-    </div>
-</section>
+      </div>
 
-<!-- ─── SKILLS ─── -->
-<section class="skills-sec">
-    <div class="wrap">
-        <div class="skills-head r">
-            <h2 class="skills-title">Стек</h2>
-            <span class="skills-c">21 технология</span>
-        </div>
-        <div class="skills-grid r">
-            <div class="sk">React Native</div>
-            <div class="sk">React</div>
-            <div class="sk">TypeScript</div>
-            <div class="sk">Expo</div>
-            <div class="sk">FastAPI</div>
-            <div class="sk">Node.js</div>
-            <div class="sk">Python</div>
-            <div class="sk">MySQL</div>
-            <div class="sk">PostgreSQL</div>
-            <div class="sk">Docker</div>
-            <div class="sk">Docker Compose</div>
-            <div class="sk">REST API</div>
-            <div class="sk">JWT</div>
-            <div class="sk">Git / GitHub</div>
-            <div class="sk">RevenueCat</div>
-            <div class="sk">Reanimated v3</div>
-            <div class="sk">i18next</div>
-            <div class="sk">SecureStore</div>
-            <div class="sk">HTML5 / CSS3</div>
-            <div class="sk">GitHub Actions</div>
-            <div class="sk">HMAC-SHA256</div>
-        </div>
-    </div>
-</section>
+      <div class="archive reveal">
+        <div class="archive-title"><p class="section-kicker" data-i18n="archive.kicker">More engineering work</p><span>04—06</span></div>
+        <a href="https://github.com/richmanstudio/polza-agency-test-task" target="_blank" rel="noreferrer"><span class="archive-id">04</span><strong>POLZA Companies</strong><span data-i18n="archive.polza">Data import &amp; indexed catalogue</span><small>Next.js · PostgreSQL</small><i>↗</i></a>
+        <a href="https://github.com/richmanstudio/nordiktz" target="_blank" rel="noreferrer"><span class="archive-id">05</span><strong>Async Lead Bot</strong><span data-i18n="archive.bot">Fault-tolerant CRM delivery</span><small>Python · Aiogram</small><i>↗</i></a>
+        <a href="https://richmanstudio.github.io/tektonikaaa/" target="_blank" rel="noreferrer"><span class="archive-id">06</span><strong>Tektonika</strong><span data-i18n="archive.tektonika">Commercial company website</span><small>React · TypeScript</small><i>↗</i></a>
+      </div>
+    </section>
 
-<!-- ─── ABOUT ─── -->
-<section class="about-sec">
-    <div class="about-inner">
-        <div class="about-left r">
-            <h2 class="about-h">О себе</h2>
-            <p class="about-text">
-                Начал программировать в <b>7 лет</b>, к 18 уже имею
-                <b>3 года коммерческого опыта</b> и полноценный продукт,
-                разработанный с нуля в одиночку.<br><br>
-                Умею не только писать код — могу провести переговоры,
-                согласовать ТЗ, сдать проект в срок и поддерживать
-                его после деплоя.
-            </p>
-        </div>
-        <div class="about-right r">
-            <h2 class="about-h">Данные</h2>
-            <div class="data-list">
-                <div class="data-row"><span class="data-key">Возраст</span><strong>18 лет</strong></div>
-                <div class="data-row"><span class="data-key">Локация</span><strong>Хабаровск</strong></div>
-                <div class="data-row"><span class="data-key">Английский</span><strong>C2 — В совершенстве</strong></div>
-                <div class="data-row"><span class="data-key">Опыт</span><strong>Тектоника · 9 мес. · Lead Dev</strong></div>
-                <div class="data-row"><span class="data-key">Формат</span><strong>Удалённо · Редкие командировки</strong></div>
-            </div>
-        </div>
-    </div>
-</section>
+    <section class="expertise section" id="expertise">
+      <div class="section-head light reveal"><div><p class="section-kicker">02 / <span data-i18n="expertise.kicker">Expertise</span></p><h2 data-i18n="expertise.title">From unclear idea<br>to working system.</h2></div><p class="section-intro" data-i18n="expertise.intro">Not a collection of disconnected services. One continuous product process, owned end to end.</p></div>
+      <div class="expertise-grid">
+        <article class="expertise-card reveal"><span>01</span><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M13 17h54v46H13zM13 29h54M24 17v46"/></svg><h3 data-i18n="expertise.product.title">Product &amp; UX</h3><p data-i18n="expertise.product.copy">Research, product logic, information architecture, prototypes and interfaces built around real user decisions.</p></article>
+        <article class="expertise-card reveal"><span>02</span><svg viewBox="0 0 80 80" aria-hidden="true"><path d="m19 25-13 15 13 15M61 25l13 15-13 15M48 12 32 68"/></svg><h3 data-i18n="expertise.engineering.title">Full-stack engineering</h3><p data-i18n="expertise.engineering.copy">Fast, accessible frontend; reliable APIs, data models, integrations and infrastructure that remain maintainable.</p></article>
+        <article class="expertise-card reveal"><span>03</span><svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="27"/><path d="M40 13v54M13 40h54M21 21l38 38M59 21 21 59"/></svg><h3 data-i18n="expertise.automation.title">Automation &amp; AI</h3><p data-i18n="expertise.automation.copy">Internal tools, Telegram products, CRM workflows and pragmatic AI integrations that remove repetitive work.</p></article>
+      </div>
+      <div class="stack-line reveal"><span>React</span><span>TypeScript</span><span>Next.js</span><span>Node.js</span><span>Python</span><span>FastAPI</span><span>Go</span><span>PostgreSQL</span><span>Docker</span></div>
+    </section>
 
-<!-- ─── CONTACT ─── -->
-<section class="contact-sec">
-    <div class="contact-inner">
-        <div class="r">
-            <h2 class="contact-h">ДАВАЙ<br><span class="co">РАБОТАТЬ</span></h2>
-        </div>
-        <div class="clinks r">
-            <a href="https://t.me/rchmanoffc" class="clink" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.6-1.38-.98-2.23-1.57-.98-.68-.35-1.05.22-1.66.15-.15 2.72-2.5 2.77-2.71.01-.03.01-.14-.06-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.27-2.04-.49-.82-.27-1.47-.42-1.42-.89.03-.25.28-.5.77-.76 3.03-1.32 5.05-2.19 6.07-2.62 2.89-1.2 3.49-1.41 3.88-1.41.09 0 .28.02.41.13.1.09.13.21.14.31-.01.09-.02.29-.03.45z"/></svg>
-                Telegram @rchmanoffc
-            </a>
-            <a href="tel:+79144092454" class="clink">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                +7 (914) 409-24-54
-            </a>
-            <a href="mailto:danrichevv@vk.com" class="clink">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                danrichevv@vk.com
-            </a>
-            <a href="https://github.com/richmanstudio" class="clink" target="_blank">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1.01.07 1.54 1.03 1.54 1.03.9 1.54 2.36 1.1 2.94.84.09-.66.35-1.1.64-1.35-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.66-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48C19.14 20.16 22 16.42 22 12c0-5.52-4.48-10-10-10z"/></svg>
-                github.com/richmanstudio
-            </a>
-        </div>
-    </div>
-</section>
+    <section class="about section" id="about">
+      <div class="about-label reveal"><p class="section-kicker">03 / <span data-i18n="about.kicker">About</span></p><span>18Y / RU</span></div>
+      <div class="about-main reveal">
+        <h2><span data-i18n="about.line1">I care about the</span> <em data-i18n="about.accent1">whole product,</em><br><span data-i18n="about.line2">not only the code.</span></h2>
+        <div class="about-copy"><p data-i18n="about.copy1">I’m Danila, a product engineer and co-founder of DUONIQ. I work at the point where business thinking, interface design and engineering meet.</p><p data-i18n="about.copy2">My job is to reduce ambiguity, find the shortest path to a useful release and build a system that can keep growing after launch.</p></div>
+      </div>
+      <div class="principles reveal"><p data-i18n="about.principles">Principles, not decoration</p><ol><li><span>01</span><b data-i18n="about.p1">Clarity before features</b></li><li><span>02</span><b data-i18n="about.p2">Evidence before assumptions</b></li><li><span>03</span><b data-i18n="about.p3">Systems before patches</b></li><li><span>04</span><b data-i18n="about.p4">Outcome before output</b></li></ol></div>
+      <a class="duoniq-card reveal" href="#contact"><div class="duoniq-word">DUONIQ<span>®</span></div><div class="duoniq-meta"><p data-i18n="duoniq.role">Co-founder / Product engineering studio</p><p data-i18n="duoniq.slogan">Two founders. One clear result.</p></div><span class="duoniq-arrow">↗</span></a>
+    </section>
 
-<!-- ─── FOOTER ─── -->
-<footer>
-    <span class="foot-txt">© 2025 Данила Капшук</span>
-    <span class="foot-txt">No frameworks · Pure HTML/CSS/JS</span>
-</footer>
-
-<script>
-    const isFine = window.matchMedia('(pointer: fine)').matches;
-
-    /* ── [9] auto year counter ── */
-    const yearsEl = document.querySelector('.stat-num[data-suffix="л"]');
-    if (yearsEl) yearsEl.dataset.target = new Date().getFullYear() - 2018;
-
-    /* ── [4] hero stagger ── */
-    document.querySelectorAll('h1 span').forEach((span, si) => {
-        const chars = span.textContent.split('');
-        span.innerHTML = chars.map((c, i) =>
-            c === ' ' ? ' ' :
-            `<span class="char" style="animation-delay:${(si * 8 + i) * 0.045}s">${c}</span>`
-        ).join('');
-    });
-
-    /* ── cursor ── */
-    const cur = document.getElementById('cursor');
-    if (isFine) {
-        document.addEventListener('mousemove', e => {
-            cur.style.left = e.clientX + 'px';
-            cur.style.top  = e.clientY + 'px';
-        });
-        document.querySelectorAll('a,button,.project,.sk,.chip').forEach(el => {
-            el.addEventListener('mouseenter', () => cur.classList.add('big'));
-            el.addEventListener('mouseleave', () => cur.classList.remove('big'));
-        });
-    }
-
-    /* ── [7] cursor trail ── */
-    if (isFine) {
-        const TRAIL = 7;
-        const trails = Array.from({ length: TRAIL }, (_, i) => {
-            const el = document.createElement('div');
-            el.className = 'cur-trail';
-            const size = 4 + i * 2.2;
-            el.style.cssText = `width:${size}px;height:${size}px;opacity:${0.55 - i * 0.07};` +
-                `transition:left ${0.06 + i * 0.055}s ease,top ${0.06 + i * 0.055}s ease;`;
-            document.body.appendChild(el);
-            return el;
-        });
-        document.addEventListener('mousemove', e => {
-            trails.forEach(t => {
-                t.style.left = e.clientX + 'px';
-                t.style.top  = e.clientY + 'px';
-            });
-        });
-    }
-
-    /* ── [3] progress bar ── */
-    const bar = document.getElementById('progress-bar');
-    function updateBar() {
-        const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-        bar.style.width = Math.min(pct, 100) + '%';
-    }
-    window.addEventListener('scroll', updateBar, { passive: true });
-
-    /* ── scroll reveal ── */
-    const io = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.r').forEach(el => io.observe(el));
-
-    /* ── counter animation ── */
-    const cio = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            const el = e.target;
-            const tgt = +el.dataset.target;
-            const suffix = el.dataset.suffix || '';
-            let val = 0;
-            const step = Math.max(1, Math.ceil(tgt / 25));
-            const timer = setInterval(() => {
-                val = Math.min(val + step, tgt);
-                el.textContent = val + (val === tgt ? suffix : '');
-                if (val >= tgt) clearInterval(timer);
-            }, 45);
-            cio.unobserve(el);
-        });
-    }, { threshold: 0.4 });
-    document.querySelectorAll('.stat-num[data-target]').forEach(el => cio.observe(el));
-
-    /* ── smooth scroll ── */
-    (function () {
-        let current = window.scrollY;
-        let target  = window.scrollY;
-        const EASE  = 0.09;
-
-        window.addEventListener('wheel', e => {
-            e.preventDefault();
-            target += e.deltaY * 0.8;
-            target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
-        }, { passive: false });
-
-        function tick() {
-            const diff = target - current;
-            if (Math.abs(diff) > 0.3) {
-                current += diff * EASE;
-                window.scrollTo(0, current);
-                updateBar();
-            }
-            requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-    })();
-</script>
+    <section class="contact" id="contact">
+      <div class="contact-top reveal"><p class="section-kicker">04 / <span data-i18n="contact.kicker">Contact</span></p><p data-i18n="contact.note">Have a serious product to build?<br>Let’s make the first conversation useful.</p></div>
+      <a class="contact-mail reveal" href="mailto:danrichevv@vk.com"><span data-i18n="contact.cta">Let’s work</span><span class="contact-arrow">↗</span></a>
+      <div class="contact-links reveal"><div><a href="https://t.me/rchmanoffc" target="_blank" rel="noreferrer">Telegram ↗</a><a href="https://github.com/richmanstudio" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:danrichevv@vk.com">Email ↗</a></div><p>© 2026 Danila Kapshuk<br><span data-i18n="contact.footer">Designed &amp; engineered with intent.</span></p><a class="back-top" href="#top"><span data-i18n="contact.top">Back to top</span> ↑</a></div>
+    </section>
+  </main>
 </body>
 </html>
